@@ -1,0 +1,9 @@
+server:
+  port: 8081
+
+api:
+  www-itc-gov-hk:
+    domain: 'www.itc.gov.hk'
+    endpoints:
+      user: '/datagovhk/DLRI/DLRIs_List_20230223_List1.json'
+      posts: '/posts'

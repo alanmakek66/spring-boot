@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+api:
+  data-etabus-gov-hk:
+    domain: 'data.etabus.gov.hk'
+    endpoints:
+      user: '/transport/kmb/route/'
+      
