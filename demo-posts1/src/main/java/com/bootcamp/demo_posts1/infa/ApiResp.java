@@ -1,16 +1,12 @@
 package com.bootcamp.demo_posts1.infa;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
+
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import io.micrometer.common.lang.NonNull;
 import lombok.AllArgsConstructor;
@@ -18,7 +14,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+
 
 @Component
 @Setter

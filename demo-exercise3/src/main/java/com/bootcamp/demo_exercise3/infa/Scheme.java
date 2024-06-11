@@ -1,6 +1,6 @@
-package com.bootcamp.demo_posts1.infa;
+package com.bootcamp.demo_exercise3.infa;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
