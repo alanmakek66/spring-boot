@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .textcenter{text-align: center;}
+    .form-container {
+  display: flex;
+  justify-content: center;}
+  </style>
+</head>
+<body>
+
+    <form th:action="@{/questionnaire/submit}" th:object="${questionnaire}" method="post">
+
+        <h1>Select Option 1</h1>
+        <div th:each="option : ${questionnaire.options1}">
+            <input type="radio" th:id="${option}" th:value="${option}" th:field="*{selectedOption1}" required>
+            <label th:for="${option}" th:text="${option}"></label>
+        </div>
+
+        <h2>Select Option 2</h2>
+        <div th:each="option : ${questionnaire.options2}">
+            <input type="radio" th:id="${option}" th:value="${option}" th:field="*{selectedOption2}" required>
+            <label th:for="${option}" th:text="${option}"></label>
+        </div>
+        <h3>Select Option 3</h3>
+        <div th:each="option : ${questionnaire.options3}">
+            <input type="radio" th:id="${option}" th:value="${option}" th:field="*{selectedOption3}" required>
+            <label th:for="${option}" th:text="${option}"></label>
+        </div> <br>
+
+        <button type="submit">Submit</button>
+    </form>
+  
+</body>
+</html>

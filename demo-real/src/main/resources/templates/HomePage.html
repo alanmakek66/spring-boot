@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .center{
+      display: flex;
+      justify-content: center;}
+  </style>
+</head>
+<body>
+  <div class="center">
+    <form th:action="@{/commentpage}" method="post" target="_blank">
+        <button type="submit">Comment Page</button>
+    </form>
+    <form th:action="@{/personpage}" method="post" target="_blank">
+      <button type="submit">Person Page</button>
+  </form></div>
+  
+</body>
+</html>

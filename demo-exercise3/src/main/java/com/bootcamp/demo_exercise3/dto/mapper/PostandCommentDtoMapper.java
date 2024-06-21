@@ -15,6 +15,7 @@ public class PostandCommentDtoMapper {
     
     List<CommentDto> commentDtos=  postAndCommnetEntities.getCommentEntities()
     .stream().map(e-> new CommentDto().builder().id(e.getId()).body(e.getBody())
+    .postId(e.getPostEntity().getId())
     .name(e.getName()).email(e.getEmail()).build()).collect(Collectors.toList());
 
  return PostandCommentDto.builder().id(postAndCommnetEntities.getId())

@@ -7,9 +7,10 @@ import com.bootcamp.demo_restful.UserEntitys.UserEntity;
 import com.bootcamp.demo_restful.UserEntitys.UserEntityDto;
 import com.bootcamp.demo_restful.infa.NotFoundException;
 import com.bootcamp.demo_restful.model.modelDto.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface UserService {
-  List<User> getUser();
+  List<User> getUser() throws JsonProcessingException;
 
   UserEntity saveUserEntity(UserEntity u1);
 

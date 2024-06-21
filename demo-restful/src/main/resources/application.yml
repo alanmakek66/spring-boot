@@ -20,5 +20,5 @@ spring:
 
 spring.jpa:
   show-sql: true
-  hibernate.ddl-auto: validate # update
+  hibernate.ddl-auto: update # update
   # Hibernate ddl auto (create, create-drop, validate, update)

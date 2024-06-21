@@ -10,6 +10,7 @@ import com.bootcamp.demo_exercise3.entity.commentEntity.CommentEntity;
 public class CommentDtoMapper {
   public CommentDto map(CommentEntity commentEntity){
     return CommentDto.builder()
+    .postId(commentEntity.getPostEntity().getId())
     .id(commentEntity.getId()).postId(commentEntity.getPostEntity().getId())
     .body(commentEntity.getBody())
     .name(commentEntity.getName()).email(commentEntity.getEmail()).build();

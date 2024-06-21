@@ -24,6 +24,7 @@ public class User {
   private Company company;
 
   @Getter
+  @Setter
   public static class Address {
     private String street;
     private String suite;
@@ -32,6 +33,7 @@ public class User {
     private Location geo;
 
     @Getter
+    @Setter
     public static class Location {
       private String lat;
       private String lng;

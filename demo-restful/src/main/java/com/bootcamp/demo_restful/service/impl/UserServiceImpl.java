@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +21,10 @@ import com.bootcamp.demo_restful.infa.Scheme;
 import com.bootcamp.demo_restful.model.modelDto.User;
 import com.bootcamp.demo_restful.reposityory.UserRepository;
 import com.bootcamp.demo_restful.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
@@ -37,23 +42,34 @@ public class UserServiceImpl implements UserService {
   @Autowired
   private UserEntityDtoMapper uedm1;
 
-  @Override
-  public List<User> getUser() {
-    // resttemplate
-    /* String url= "https://jsonplaceholder.typicode.com/users"; */
+  @Autowired
+  private RedisTemplate<String,String> redisTemplate;
 
-    String url = UriComponentsBuilder.newInstance()
+  @Override
+  public List<User> getUser() throws JsonProcessingException{
+   
+    ObjectMapper objectMapper=new ObjectMapper();
+    // get from redis
+
+    String redisvalue = redisTemplate.opsForValue().get("jph-uesers");
+    if(redisvalue !=null){
+      
+      return List.of(objectMapper.readValue(redisvalue, User[].class));
+    }else{
+      String url = UriComponentsBuilder.newInstance()
         .scheme(Scheme.HTTPS.name())
         .host(this.domain)
         .path(this.usersEndpoint)
         .toUriString();
 
     User[] u1 = new RestTemplate().getForObject(url, User[].class);
-    // 1 call api and get json result
-    // 2 convert json result to java object
+   String json= objectMapper.writeValueAsString(u1);
+   this.redisTemplate.opsForValue().set("jph-uesers", json);
 
-    return Arrays.asList(u1);
-  }
+   return  Arrays.asList(u1);
+
+    }
+}
 
   @Override
   public UserEntity saveUserEntity(UserEntity u1) {

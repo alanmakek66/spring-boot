@@ -1,0 +1,17 @@
+
+    body{background-color: black;}
+    h1{color: aqua; font-size: 100px;}
+    a{color: blue;}
+    a:hover{color: black;}
+    #abc{color: brown;}
+    .same{color: blueviolet;font-size: 60px;font-weight: bold;}
+    .textingcenter{text-align: center;}
+    .textingrigth{text-align: right;}
+    .textingleft{text-align: left;}
+    .lineweghit{line-height: 1;}
+    .letterSpacing{letter-spacing: 15px;}
+    .wordSpacing{word-spacing: 5px;}
+    img{border: thick solid darkblue;}
+    #distance{padding: 15px;margin: 15px;}
+
+    

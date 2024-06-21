@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Playwrite+PL:wght@100..400&display=swap" rel="stylesheet">
+  
+  <style>
+    .textcenter{text-align: center;}
+    .form-container {
+  display: flex;
+  justify-content: center;
+}
+.button {
+  width: 100px;
+  height: 50px;
+  border-radius: 60px;
+}
+.custom-select {
+  width: 200px;
+  height: 40px;
+}
+.bungee-inline-regular {
+  font-family: "Bungee Inline", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.borad{
+  border-style: dotted;
+  border-color: brown;
+}
+
+
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment Page</title>
+</head>
+<body>
+  <div class="textcenter">
+  <h1 class="textcenter  bungee-inline-regular">Enter Comment</h1> <br>
+  
+  <form th:action="@{/save}" th:object="${comment}" method="post">
+    <input type="text" th:field="*{comment}"  placeholder="comment"/>
+    <button type="submit">Save</button></div> </form><br>
+
+    <div class="textcenter">
+    <a href="https://www.google.com/">
+      <button class="button">Google</button>
+    </a></div> <br>
+<div class="textcenter">
+    <form action="">
+      <select name="" id="" class="custom-select">
+        <option value="hk">香港</option>
+        <option value="jp">日本</option>
+        <option value="usa">美國</option>
+      </select><br>
+      <button class="button" type="submit">提交</button>
+    </form></div><br><br>
+<div>
+  <p class="borad">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas perspiciatis quidem ipsum consequuntur odit, aliquam laborum sunt officia distinctio alias dolores sit, nostrum molestiae iusto repudiandae veritatis libero. Tempora, sunt.</p>
+</div>
+
+    
+
+  
+</body>
+</html>

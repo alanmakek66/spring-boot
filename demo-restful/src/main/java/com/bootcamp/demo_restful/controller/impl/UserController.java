@@ -21,6 +21,7 @@ import com.bootcamp.demo_restful.infa.ApiResp;
 import com.bootcamp.demo_restful.infa.NotFoundException;
 import com.bootcamp.demo_restful.model.modelDto.User;
 import com.bootcamp.demo_restful.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @RestController
 //@RequestMapping(value = "/v1")
@@ -39,7 +40,7 @@ public class UserController implements UserOperation {
   private ApiResp apiResp;
 
   @Override
-  public List<UserDto> getUsers() {
+  public List<UserDto> getUsers() throws JsonProcessingException {
 
     return us11.getUser().stream().map(e -> umum.maptoUserDto(e))
         .collect(Collectors.toList());
@@ -47,7 +48,7 @@ public class UserController implements UserOperation {
   }
 
   @Override
-  public List<UserDto> save() {
+  public List<UserDto> save() throws JsonProcessingException{
 
     fs1.getUserdtos().addAll(us11.getUser().stream().map(e -> umum.maptoUserDto(e))
         .collect(Collectors.toList()));
@@ -57,7 +58,7 @@ public class UserController implements UserOperation {
   }
 
   @Override
-  public List<User> save2(){
+  public List<User> save2() throws JsonProcessingException{
     fs1.getUsers().addAll(us11.getUser());
 
     return fs1.getUsers();

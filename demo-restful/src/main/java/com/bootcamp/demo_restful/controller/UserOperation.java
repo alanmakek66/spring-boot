@@ -17,17 +17,18 @@ import com.bootcamp.demo_restful.UserEntitys.UserEntityDto;
 import com.bootcamp.demo_restful.infa.ApiResp;
 import com.bootcamp.demo_restful.infa.NotFoundException;
 import com.bootcamp.demo_restful.model.modelDto.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface UserOperation {
 
   @GetMapping(value = "/jsonplaceholder/users")
-  List<UserDto> getUsers();
+  List<UserDto> getUsers() throws JsonProcessingException;
 
   @GetMapping(value = "/save/usersdto")
-  List<UserDto> save();
+  List<UserDto> save()throws JsonProcessingException;
 
   @GetMapping(value = "/save/users")
-  List<User> save2();
+  List<User> save2() throws JsonProcessingException;
 
   @GetMapping(value = "/po")
   List<UserDto> po();

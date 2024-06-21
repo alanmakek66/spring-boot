@@ -27,6 +27,7 @@ public class UserDto {
   //private String website;
   private Companydto company;
 
+  @Setter
   @Getter
   @Builder
   public static class Addressdto {
@@ -36,6 +37,7 @@ public class UserDto {
     private String zipcode;
     private Location geo;
 
+    @Setter
     @Getter
     public static class Location {
       private String lat;
@@ -44,6 +46,7 @@ public class UserDto {
 
   }
 
+  @Setter
   @Getter
   @Builder
   public static class Companydto {
