@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bootcamp.demo_bc_yahoo_finance.dto.FiveMin005Dto;
 import com.bootcamp.demo_bc_yahoo_finance.dto.FiveMin388Dto;
 import com.bootcamp.demo_bc_yahoo_finance.dto.FiveMin700Dto;
+import com.bootcamp.demo_bc_yahoo_finance.dto.History005Dto;
+import com.bootcamp.demo_bc_yahoo_finance.dto.History388Dto;
+import com.bootcamp.demo_bc_yahoo_finance.dto.History700Dto;
 import com.bootcamp.demo_bc_yahoo_finance.dto.StocksDto;
 import com.bootcamp.demo_bc_yahoo_finance.dto.SysDate005Dto;
 import com.bootcamp.demo_bc_yahoo_finance.dto.SysDate388Dto;
@@ -52,6 +55,19 @@ throws JsonProcessingException;
   @GetMapping(value = "/v1/005/data")
   FiveMin005Dto get0005Data()
   throws JsonProcessingException;
+
+  @GetMapping(value = "/histroy/data/388")
+  List< History388Dto> histroy388()throws JsonProcessingException;
+
+  @GetMapping(value = "/histroy/data/005")
+  List<History005Dto> histroy005()throws JsonProcessingException;
+
+  @GetMapping(value = "/histroy/data/700")
+  List<History700Dto> histroy700()throws JsonProcessingException;
+
+  @GetMapping(value = "/handsupdateHistory")
+  void handsupdate()throws JsonProcessingException;
+  
 
 
   

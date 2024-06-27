@@ -10,9 +10,10 @@ import org.springframework.stereotype.Component;
 
 import com.bootcamp.demo_bc_yahoo_finance.holiday.Holiday;
 import com.bootcamp.demo_bc_yahoo_finance.model.Stock;
-
+import com.bootcamp.demo_bc_yahoo_finance.service.HistoryDataService;
 import com.bootcamp.demo_bc_yahoo_finance.service.KeyService;
 import com.bootcamp.demo_bc_yahoo_finance.service.StockService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 @Component
 public class AppRunner implements CommandLineRunner   {
@@ -24,6 +25,8 @@ public class AppRunner implements CommandLineRunner   {
   private StockService stockService;
   @Autowired
   private Holiday holiday;
+  @Autowired
+  private HistoryDataService historyDataService;
 
   @Override
   //@Scheduled(fixedRate = 5 * 60 * 1000)
@@ -38,7 +41,7 @@ public class AppRunner implements CommandLineRunner   {
 
  }
 
- @Scheduled(cron = "0 0/5 9-17 ? * MON-FRI")
+ @Scheduled(cron = "1 0/5 9-17 ? * MON-FRI")
  public void update(){
   if(!(holiday.isHoliday(LocalDate.now()))){
   stockService.update5mindata();}
@@ -60,6 +63,15 @@ public class AppRunner implements CommandLineRunner   {
  @Scheduled(cron = "0 55 8 * * ?")
  public void updateSysDate(){
   stockService.cleanAllSysDate();
+
+}
+
+@Scheduled(cron = "0 39 23 ? * MON-FRI")
+public void updatehistory() throws JsonProcessingException{
+  historyDataService.getHistoryData388ALL();
+  historyDataService.getHistoryData700ALL();
+  historyDataService.getHistoryData005ALL();
+
 
 }
 

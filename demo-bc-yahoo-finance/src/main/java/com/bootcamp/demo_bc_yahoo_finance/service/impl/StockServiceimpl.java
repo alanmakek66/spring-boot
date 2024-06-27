@@ -181,9 +181,9 @@ public class StockServiceimpl implements StockService {
     yahooStockEntityRepository.save(yahooStockEntity005);
 
     redisTemplate.delete("5min");
+    redisTemplate.delete("5MIN-0700.HK");
     redisTemplate.delete("5MIN-0388.HK");
-    redisTemplate.delete("5MIN-0388.HK");
-    redisTemplate.delete("5MIN-0388.HK");
+    redisTemplate.delete("5MIN-0005.HK");
 
   }
 
@@ -289,7 +289,7 @@ public class StockServiceimpl implements StockService {
       Data388forRedis data388forRedis = new Data388forRedis(dataforCaches);
       String json = objectMapper.writeValueAsString(data388forRedis);
 
-      redisTemplate.opsForValue().set("5MIN-0388.HK", json,Duration.ofMinutes(30));
+      redisTemplate.opsForValue().set("5MIN-0388.HK", json,Duration.ofMinutes(5));
       return data388forRedis;
 
     }
@@ -322,7 +322,7 @@ public class StockServiceimpl implements StockService {
       Data700forRedis data700forRedis = new Data700forRedis(dataforCaches);
       String json = objectMapper.writeValueAsString(data700forRedis);
 
-      redisTemplate.opsForValue().set("5MIN-0700.HK", json,Duration.ofMinutes(30));
+      redisTemplate.opsForValue().set("5MIN-0700.HK", json,Duration.ofMinutes(5));
       return data700forRedis;
 
     }
@@ -343,7 +343,7 @@ public class StockServiceimpl implements StockService {
       return data005forRedis;
     } else {
       List<YahooStockEntity> yahooStockEntities = yahooStockEntityRepository.findAll()
-          .stream().filter(e -> e.getSymbol().equals("0700.HK")
+          .stream().filter(e -> e.getSymbol().equals("0005.HK")
               && e.getType().equals("5min") && e.getMarketTime().toLocalDate().toString().equals(sysdate))
           .collect(Collectors.toList());
 
@@ -353,7 +353,7 @@ public class StockServiceimpl implements StockService {
       Data005forRedis data005forRedis = new Data005forRedis(dataforCaches);
       String json = objectMapper.writeValueAsString(data005forRedis);
 
-      redisTemplate.opsForValue().set("5MIN-005.HK", json,Duration.ofMinutes(30));
+      redisTemplate.opsForValue().set("5MIN-005.HK", json,Duration.ofMinutes(5));
       return data005forRedis;
 
     }
