@@ -1,5 +1,7 @@
 package com.bootcamp.demo_bc_yahoo_finance;
 
+import java.util.TimeZone;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -21,7 +23,11 @@ public class DemoBcYahooFinanceApplication {
     }
 
 	public static void main(String[] args) {
+        TimeZone.setDefault(TimeZone.getTimeZone("Asia/Hong_Kong"));
 		SpringApplication.run(DemoBcYahooFinanceApplication.class, args);
+        
 	}
+
+    
 
 }
